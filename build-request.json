@@ -1,0 +1,41 @@
+{
+  "kind": "build_request",
+  "title": "Fix: Adding new staff members fails",
+  "projectName": "KM Foods",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Investigate and fix the bug that prevents adding new staff members on the Staff Management page. Trace the full call path from the frontend form submission through the useQueries mutation hook to the backend addStaff (or equivalent) function in main.mo. Ensure the mutation correctly constructs the staff record payload (name, role, generated ID, active status), calls the actor method, handles the response, and invalidates the staff list query cache so the newly added member appears in the list immediately.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-6"
+        ],
+        "quotes": [
+          "failed to add staff members"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Submitting a valid name and role in the Add Staff form on the Staff Management page successfully creates a new staff record in the backend.",
+        "The newly added staff member appears in the staff list immediately after submission without requiring a page reload.",
+        "No error toast or console error is shown when adding a valid staff member.",
+        "Duplicate or empty-name submissions are gracefully rejected with a user-friendly error message.",
+        "The fix does not break deactivation or staff listing functionality."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the existing backend data model or schema for staff records unless strictly required to fix the bug.",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui."
+  ],
+  "nonGoals": [
+    "Adding new fields to the staff record beyond what is already defined.",
+    "Changing the visual design or layout of the Staff Management page.",
+    "Fixing unrelated bugs on other pages."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

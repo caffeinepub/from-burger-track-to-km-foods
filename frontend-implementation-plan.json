@@ -1,0 +1,30 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix: Adding new staff members fails",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Fix the bug preventing staff members from being added via the Staff Management page by debugging the frontend form submission, mutation hook, and query cache invalidation flow",
+      "acceptanceCriteria": [
+        "Submitting a valid name and role in the Add Staff form on the Staff Management page successfully creates a new staff record in the backend.",
+        "The newly added staff member appears in the staff list immediately after submission without requiring a page reload.",
+        "No error toast or console error is shown when adding a valid staff member.",
+        "Duplicate or empty-name submissions are gracefully rejected with a user-friendly error message.",
+        "The fix does not break deactivation or staff listing functionality."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/StaffManagement.tsx",
+          "operation": "modify",
+          "description": "Debug and fix the Add Staff form submission handler. Review the form state management, validate that staffId is generated correctly using generateStaffId from dateUtils, ensure fullName and role are properly extracted from form state, verify the addStaffMutation call passes the correct parameters matching the backend interface (staffId: string, fullName: string, role: Role), add proper error handling for empty names and duplicate staff IDs, ensure success/error toast notifications are triggered appropriately, and confirm the form resets after successful submission. Verify that the mutation hook from useQueries is being called correctly."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Debug and fix the addStaffMutation hook. Verify the mutation function correctly calls actor.addStaff with the three required parameters (staffId, fullName, role) matching the backend interface signature. Ensure the onSuccess callback properly invalidates the 'staff' query key to trigger an immediate refetch of the staff list. Add error handling in onError to capture and surface backend errors (e.g., duplicate staff ID, validation failures). Confirm the mutation returns the backend boolean result and handles it appropriately. Review cache invalidation timing to ensure the new staff member appears in the list without delay."
+        }
+      ]
+    }
+  ]
+}

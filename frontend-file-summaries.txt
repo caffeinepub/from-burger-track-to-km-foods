@@ -1,0 +1,15 @@
+{
+  "frontend/src/App.tsx": "Main app entry with TanStack Router setup, defining routes for Dashboard (/), Attendance (/attendance), Sales & Expenses (/sales), and Staff Management (/staff), wrapped in AppLayout with Toaster.",
+  "frontend/src/components/AppLayout.tsx": "Responsive shell layout with sticky dark header showing \"KM Foods\" logo/brand name, nav links for all four pages, main content area, and footer with \"KM Foods\" copyright and caffeine.ai attribution.",
+  "frontend/src/components/ShiftBadge.tsx": "Reusable badge component for shift display — amber for morning, deep red for evening, with emoji icons.",
+  "frontend/src/components/RoleBadge.tsx": "Reusable badge component for staff roles — gold for manager, neutral charcoal for staff.",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks for backend operations — fixes `useAddStaff` (renamed from `useAddOrUpdateStaff`) to correctly call `actor.addStaff()` matching the backend interface, with proper cache invalidation and error logging. Includes hooks for attendance sign-in/sign-out and financial record read/write.",
+  "frontend/src/lib/dateUtils.ts": "Utility functions for date/time conversion between JS Date and ICP nanosecond bigints, formatting helpers for display and currency.",
+  "frontend/src/pages/Dashboard.tsx": "Home page showing today's date, attendance counts by shift, financial summary cards, and quick-action navigation buttons to Attendance and Sales pages.",
+  "frontend/src/pages/StaffManagement.tsx": "Staff management page with add-staff form (name + role), searchable active staff list with role badges, and deactivate confirmation dialog — updated to import and use the renamed `useAddStaff` hook with improved error message handling.",
+  "frontend/src/pages/Attendance.tsx": "Daily attendance page with date picker, shift filter tabs, per-staff sign-in (with shift selector) and sign-out buttons, showing sign-in/out times.",
+  "frontend/src/pages/SalesExpenses.tsx": "Daily sales and expenses page with morning/evening shift panels for cash sales, online sales, and expenses inputs; auto-calculates total cash and shows daily summary with net profit.",
+  "frontend/src/index.css": "Global styles with OKLCH dark warm-charcoal theme, Inter font import, and custom scrollbar styling.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Inter font, brand color tokens (charcoal, amber, gold, red-accent, card-surface, surface) for the fast-food theme.",
+  "frontend/index.html": "HTML entry point with updated browser tab title reading \"KM Foods - Staff & Sales Manager\"."
+}

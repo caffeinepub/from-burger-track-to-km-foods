@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "A burger outlet management app to monitor staff attendance (sign in/out), staff names, daily cash sales, total cash, online sales, and daily expenses for morning and evening shifts.",
+  "architectural_notes": [
+    "App targets a burger outlet with two shifts: morning and evening",
+    "Staff roles include regular staff and managers"
+  ],
+  "known_issues": [
+    "Adding new staff members fails in the current build"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-build-a-staff-management-page-in-the-frontend-where-users-can-view-the-list-of-all-staff-including-managers-add-new-staff-members-name-and-role-and-deactivate-existing-ones-display-role-badges-to-distinguish-managers-from-regular-staff",
+      "title": "Build a Staff Management page in the frontend where users can view the list of all staff (including managers), add new staff members (name and role), and deactivate existing ones. Display role badges to distinguish managers from regular staff.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-daily-attendance-page-in-the-frontend-display-today-s-date-by-default-with-a-date-picker-to-navigate-to-other-days-show-a-table-of-all-staff-with-their-shift-assignment-sign-in-time-and-sign-out-time-for-the-selected-date-provide-buttons-to-record-sign-in-and-sign-out-for-each-staff-member-and-allow-filtering-by-shift-morning-evening",
+      "title": "Build a Daily Attendance page in the frontend. Display today's date by default with a date picker to navigate to other days. Show a table of all staff with their shift assignment, sign-in time, and sign-out time for the selected date. Provide buttons to record sign-in and sign-out for each staff member, and allow filtering by shift (morning/evening).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-daily-sales-expenses-page-in-the-frontend-for-the-selected-date-display-two-shift-panels-morning-and-evening-each-showing-cash-sales-input-online-sales-input-total-cash-auto-calculated-and-expenses-input-allow-submitting-or-updating-the-figures-for-each-shift-show-a-daily-summary-section-with-combined-totals-across-both-shifts",
+      "title": "Build a Daily Sales & Expenses page in the frontend. For the selected date, display two shift panels (morning and evening), each showing: cash sales input, online sales input, total cash (auto-calculated), and expenses input. Allow submitting or updating the figures for each shift. Show a daily summary section with combined totals across both shifts.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-dashboard-home-page-that-shows-a-summary-for-today-total-staff-present-signed-in-by-shift-today-s-total-cash-sales-online-sales-total-cash-and-total-expenses-aggregated-across-both-shifts-include-quick-action-buttons-to-navigate-to-attendance-and-sales-pages",
+      "title": "Build a Dashboard / Home page that shows a summary for today: total staff present (signed in) by shift, today's total cash sales, online sales, total cash, and total expenses aggregated across both shifts. Include quick-action buttons to navigate to Attendance and Sales pages.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-warm-fast-food-visual-theme-across-the-entire-app-deep-charcoal-backgrounds-with-amber-golden-yellow-and-warm-red-accents-strong-sans-serif-typography-and-a-clean-card-based-layout-use-consistent-color-coded-badges-for-shifts-morning-amber-evening-deep-red-and-roles-manager-gold-staff-neutral-enforce-this-theme-consistently-across-all-pages",
+      "title": "Apply a bold, warm fast-food visual theme across the entire app: deep charcoal backgrounds with amber/golden-yellow and warm red accents, strong sans-serif typography, and a clean card-based layout. Use consistent color-coded badges for shifts (morning = amber, evening = deep red) and roles (manager = gold, staff = neutral). Enforce this theme consistently across all pages.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rename-the-app-from-burger-track-burgertrack-to-km-foods-across-all-user-facing-text-including-the-html-page-title-index-html-the-header-logo-in-applayout-the-footer-branding-and-any-other-visible-references-to-the-old-name",
+      "title": "Rename the app from 'Burger Track' / 'BurgerTrack' to 'KM Foods' across all user-facing text, including the HTML page title (index.html), the header/logo in AppLayout, the footer branding, and any other visible references to the old name.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-five-existing-features-are-fully-wired-end-to-end-and-working-staff-management-page-daily-attendance-page-daily-sales-expenses-page-dashboard-page-and-the-warm-fast-food-visual-theme-verify-that-navigation-between-all-four-pages-works-correctly-and-that-data-mutations-add-staff-sign-in-out-save-sales-figures-persist-through-the-backend-actor",
+      "title": "Ensure all five existing features are fully wired end-to-end and working: Staff Management page, Daily Attendance page, Daily Sales & Expenses page, Dashboard page, and the warm fast-food visual theme. Verify that navigation between all four pages works correctly and that data mutations (add staff, sign in/out, save sales figures) persist through the backend actor.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-and-fix-the-bug-that-prevents-adding-new-staff-members-on-the-staff-management-page-trace-the-full-call-path-from-the-frontend-form-submission-through-the-usequeries-mutation-hook-to-the-backend-addstaff-or-equivalent-function-in-main-mo-ensure-the-mutation-correctly-constructs-the-staff-record-payload-name-role-generated-id-active-status-calls-the-actor-method-handles-the-response-and-invalidates-the-staff-list-query-cache-so-the-newly-added-member-appears-in-the-list-immediately",
+      "title": "Investigate and fix the bug that prevents adding new staff members on the Staff Management page. Trace the full call path from the frontend form submission through the useQueries mutation hook to the backend addStaff (or equivalent) function in main.mo. Ensure the mutation correctly constructs the staff record payload (name, role, generated ID, active status), calls the actor method, handles the response, and invalidates the staff list query cache so the newly added member appears in the list immediately.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Staff attendance tracking: sign in and sign out times, staff names, including managers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Daily cash sales tracking with total cash calculation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Online sales tracking per day",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Daily expenses tracking for morning and evening shifts",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Morning and evening shift management support",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Create a backend data model and API for staff records, storing staff ID, full name, role (staff or manager), and active status. Provide functions to add, update, deactivate, and list all staff members.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Create a backend data model and API for daily attendance records. Each record must store: staff ID, date, shift (morning or evening), sign-in time, sign-out time (nullable). Provide functions to record sign-in, record sign-out, and query attendance by date and/or staff member.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Create a backend data model and API for daily financial records per shift. Each record must store: date, shift (morning or evening), cash sales amount, online sales amount, and total expenses. Provide functions to create/update a daily shift financial record and query records by date range.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Burger Outlet Staff & Sales Manager",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
